@@ -11,19 +11,34 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
   const router = useRouter();
   const head = () => (
     <Head>
-      <title>Programming blogs | {APP_NAME}</title>
-      <meta name='description' content='Programming blogs and tutorials on react node next vue php laravel and web developoment' />
-      <link rel='canonical' href={`${DOMAIN}${router.pathname}`} />
-      <meta property='og:title' content={`Latest web developoment tutorials | ${APP_NAME}`} />
-      <meta property='og:description' content='Programming blogs and tutorials on react node next vue php laravel and web developoment' />
-      <meta property='og:type' content='webiste' />
-      <meta property='og:url' content={`${DOMAIN}${router.pathname}`} />
-      <meta property='og:site_name' content={`${APP_NAME}`} />
+      <title>Programming blogs | {process.env.NEXT_PUBLIC_APP_NAME}</title>
+      <meta
+        name="description"
+        content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
+      />
+      <link rel="canonical" href={`${process.env.NEXT_PUBLIC_DOMAIN}${router.pathname}`} />
+      <meta
+        property="og:title"
+        content={`Latest web developoment tutorials | ${process.env.NEXT_PUBLIC_APP_NAME}`}
+      />
+      <meta
+        property="og:description"
+        content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
+      />
+      <meta property="og:type" content="webiste" />
+      <meta property="og:url" content={`${process.env.NEXT_PUBLIC_DOMAIN}${router.pathname}`} />
+      <meta property="og:site_name" content={`${process.env.NEXT_PUBLIC_APP_NAME}`} />
 
-      <meta property='og:image' content={`${DOMAIN}/static/images/seoblog.jpg`} />
-      <meta property='og:image:secure_url' content={`${DOMAIN}/static/images/seoblog.jpg`} />
-      <meta property='og:image:type' content='image/jpg' />
-      <meta property='fb:app_id' content={`${FB_APP_ID}`} />
+      <meta
+        property="og:image"
+        content={`${process.env.NEXT_PUBLIC_DOMAIN}/static/images/seoblog.jpg`}
+      />
+      <meta
+        property="og:image:secure_url"
+        content={`${process.env.NEXT_PUBLIC_DOMAIN}/static/images/seoblog.jpg`}
+      />
+      <meta property="og:image:type" content="image/jpg" />
+      <meta property="fb:app_id" content={`${process.env.NEXT_PUBLIC_FB_APP_ID}`} />
     </Head>
   );
 
@@ -49,7 +64,7 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
     return (
       size > 0 &&
       size >= limit && (
-        <button onClick={loadMore} className='btn btn-outline-primary btn-lg'>
+        <button onClick={loadMore} className="btn btn-outline-primary btn-lg">
           Load more
         </button>
       )
@@ -71,7 +86,7 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
   const showAllCategories = () => {
     return categories.map((c, i) => (
       <Link href={`/categories/${c.slug}`} key={i}>
-        <a className='btn btn-primary mr-1 ml-1 mt-3'>{c.name}</a>
+        <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
       </Link>
     ));
   };
@@ -79,7 +94,7 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
   const showAllTags = () => {
     return tags.map((t, i) => (
       <Link href={`/tags/${t.slug}`} key={i}>
-        <a className='btn btn-outline-primary mr-1 ml-1 mt-3'>{t.name}</a>
+        <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
       </Link>
     ));
   };
@@ -97,13 +112,15 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
       {head()}
       <Layout>
         <main>
-          <div className='container-fluid'>
+          <div className="container-fluid">
             <header>
-              <div className='col-md-12 pt-3'>
-                <h1 className='display-4 font-weight-bold text-center'>Programming blogs and tutorials</h1>
+              <div className="col-md-12 pt-3">
+                <h1 className="display-4 font-weight-bold text-center">
+                  Programming blogs and tutorials
+                </h1>
               </div>
               <section>
-                <div className='pb-5 text-center'>
+                <div className="pb-5 text-center">
                   {showAllCategories()}
                   <br />
                   {showAllTags()}
@@ -111,9 +128,9 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
               </section>
             </header>
           </div>
-          <div className='container-fluid'>{showAllBlogs()}</div>
-          <div className='container-fluid'>{showLoadedBlogs()}</div>
-          <div className='text-center pt-5 pb-5'>{loadMoreButton()}</div>
+          <div className="container-fluid">{showAllBlogs()}</div>
+          <div className="container-fluid">{showLoadedBlogs()}</div>
+          <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
         </main>
       </Layout>
     </React.Fragment>

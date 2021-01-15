@@ -4,7 +4,19 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import {APP_NAME} from 'config';
 import {signout, isAuth} from 'actions/auth';
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
 import 'nprogress/nprogress.css';
 import Search from './blog/Search';
 
@@ -21,22 +33,22 @@ const Header = () => {
 
   return (
     <>
-      <Navbar color='light' light expand='md'>
-        <Link href='/'>
-          <NavLink className='font-weight-bold'>{APP_NAME}</NavLink>
+      <Navbar color="light" light expand="md">
+        <Link href="/">
+          <NavLink className="font-weight-bold">{process.env.NEXT_PUBLIC_APP_NAME}</NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className='ml-auto' navbar>
+          <Nav className="ml-auto" navbar>
             <>
               <NavItem>
-                <Link href='/blogs'>
+                <Link href="/blogs">
                   <NavLink>Blogs</NavLink>
                 </Link>
               </NavItem>
 
               <NavItem>
-                <Link href='/contact'>
+                <Link href="/contact">
                   <NavLink>Contact</NavLink>
                 </Link>
               </NavItem>
@@ -50,7 +62,9 @@ const Header = () => {
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <NavLink style={{cursor: 'pointer'}} onClick={() => signout(() => Router.replace(`/signin`))}>
+                  <NavLink
+                    style={{cursor: 'pointer'}}
+                    onClick={() => signout(() => Router.replace(`/signin`))}>
                     Signout
                   </NavLink>
                 </NavItem>
@@ -58,12 +72,12 @@ const Header = () => {
             ) : (
               <>
                 <NavItem>
-                  <Link href='/signin'>
+                  <Link href="/signin">
                     <NavLink>Signin</NavLink>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href='/signup'>
+                  <Link href="/signup">
                     <NavLink>Signup</NavLink>
                   </Link>
                 </NavItem>
@@ -71,7 +85,7 @@ const Header = () => {
             )}
 
             <NavItem>
-              <a href='/user/crud/blog' className='btn btn-primary text-light'>
+              <a href="/user/crud/blog" className="btn btn-primary text-light">
                 Write a blog
               </a>
             </NavItem>

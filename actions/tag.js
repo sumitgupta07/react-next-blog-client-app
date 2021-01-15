@@ -3,7 +3,7 @@ import {API} from '../config';
 import {handleResponse} from './auth';
 
 export const create = (tag, token) => {
-  return fetch(`${API}/tag`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/tag`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -20,7 +20,7 @@ export const create = (tag, token) => {
 };
 
 export const getTags = () => {
-  return fetch(`${API}/tags`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/tags`, {
     method: 'GET',
   })
     .then((response) => {
@@ -30,7 +30,7 @@ export const getTags = () => {
 };
 
 export const singleTag = (slug) => {
-  return fetch(`${API}/tag/${slug}`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/tag/${slug}`, {
     method: 'GET',
   })
     .then((response) => {
@@ -40,7 +40,7 @@ export const singleTag = (slug) => {
 };
 
 export const removeTag = (slug, token) => {
-  return fetch(`${API}/tag/${slug}`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/tag/${slug}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',

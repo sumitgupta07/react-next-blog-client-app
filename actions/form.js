@@ -5,9 +5,9 @@ export const emailContactForm = (data) => {
   let emailEndpoint;
 
   if (data.authorEmail) {
-    emailEndpoint = `${API}/contact-blog-author`;
+    emailEndpoint = `${process.env.NEXT_PUBLIC_API}/contact-blog-author`;
   } else {
-    emailEndpoint = `${API}/contact`;
+    emailEndpoint = `${process.env.NEXT_PUBLIC_API}/contact`;
   }
 
   return fetch(`${emailEndpoint}`, {

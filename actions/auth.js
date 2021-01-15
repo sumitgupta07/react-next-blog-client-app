@@ -17,7 +17,7 @@ export const handleResponse = (response) => {
 };
 
 export const preSignup = (user) => {
-  return fetch(`${API}/pre-signup`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/pre-signup`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -32,7 +32,7 @@ export const preSignup = (user) => {
 };
 
 export const signup = (user) => {
-  return fetch(`${API}/signup`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/signup`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -47,7 +47,7 @@ export const signup = (user) => {
 };
 
 export const signin = (user) => {
-  return fetch(`${API}/signin`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/signin`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -66,7 +66,7 @@ export const signout = (next) => {
   removeLocalStorage('user');
   next();
 
-  return fetch(`${API}/signout`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/signout`, {
     method: 'GET',
   })
     .then((response) => {
@@ -142,7 +142,7 @@ export const updateUser = (user, next) => {
 
 export const forgotPassword = (email) => {
   console.log(email);
-  return fetch(`${API}/forgot-password`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/forgot-password`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -158,7 +158,7 @@ export const forgotPassword = (email) => {
 };
 
 export const resetPassword = (resetInfo) => {
-  return fetch(`${API}/reset-password`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/reset-password`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -173,7 +173,7 @@ export const resetPassword = (resetInfo) => {
 };
 
 export const loginWithGoogle = (user) => {
-  return fetch(`${API}/google-login`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/google-login`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

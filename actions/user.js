@@ -3,7 +3,7 @@ import {API} from '../config';
 import {handleResponse} from './auth';
 
 export const userPublicProfile = (username) => {
-  return fetch(`${API}/user/${username}`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/user/${username}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -16,7 +16,7 @@ export const userPublicProfile = (username) => {
 };
 
 export const getProfile = (token) => {
-  return fetch(`${API}/user/profile`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/user/profile`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -30,7 +30,7 @@ export const getProfile = (token) => {
 };
 
 export const update = (token, user) => {
-  return fetch(`${API}/user/update`, {
+  return fetch(`${process.env.NEXT_PUBLIC_API}/user/update`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',

@@ -147,9 +147,14 @@ const BlogUpdate = () => {
     return (
       categories &&
       categories.map((c, i) => (
-        <li key={i} className='list-unstyled'>
-          <input onChange={handleToggle(c._id)} checked={findOutCategory(c._id)} type='checkbox' className='mr-2' />
-          <label className='form-check-label'>{c.name}</label>
+        <li key={i} className="list-unstyled">
+          <input
+            onChange={handleToggle(c._id)}
+            checked={findOutCategory(c._id)}
+            type="checkbox"
+            className="mr-2"
+          />
+          <label className="form-check-label">{c.name}</label>
         </li>
       ))
     );
@@ -159,9 +164,14 @@ const BlogUpdate = () => {
     return (
       tags &&
       tags.map((t, i) => (
-        <li key={i} className='list-unstyled'>
-          <input onChange={handleTagsToggle(t._id)} checked={findOutTag(t._id)} type='checkbox' className='mr-2' />
-          <label className='form-check-label'>{t.name}</label>
+        <li key={i} className="list-unstyled">
+          <input
+            onChange={handleTagsToggle(t._id)}
+            checked={findOutTag(t._id)}
+            type="checkbox"
+            className="mr-2"
+          />
+          <label className="form-check-label">{t.name}</label>
         </li>
       ))
     );
@@ -186,7 +196,11 @@ const BlogUpdate = () => {
       if (data.error) {
         setValues({...values, error: data.error});
       } else {
-        setValues({...values, title: '', success: `Blog titled "${data.title}" is successfully updated`});
+        setValues({
+          ...values,
+          title: '',
+          success: `Blog titled "${data.title}" is successfully updated`,
+        });
         if (isAuth() && isAuth().role === 1) {
           // Router.replace(`/admin/crud/${router.query.slug}`);
           Router.replace(`/admin`);
@@ -199,13 +213,13 @@ const BlogUpdate = () => {
   };
 
   const showError = () => (
-    <div className='alert alert-danger' style={{display: error ? '' : 'none'}}>
+    <div className="alert alert-danger" style={{display: error ? '' : 'none'}}>
       {error}
     </div>
   );
 
   const showSuccess = () => (
-    <div className='alert alert-success' style={{display: success ? '' : 'none'}}>
+    <div className="alert alert-success" style={{display: success ? '' : 'none'}}>
       {success}
     </div>
   );
@@ -213,15 +227,30 @@ const BlogUpdate = () => {
   const updateBlogForm = () => {
     return (
       <form onSubmit={editBlog}>
-        <div className='form-group'>
-          <label className='text-muted'>Title</label>
-          <input type='text' className='form-control' value={title} onChange={handleChange('title')} />
+        <div className="form-group">
+          <label className="text-muted">Title</label>
+          <input
+            type="text"
+            className="form-control"
+            value={title}
+            onChange={handleChange('title')}
+          />
         </div>
 
-        <div className='form-group'>{formData !== '' && <ReactQuill modules={QuillModules} formats={QuillFormats} value={body} placeholder='Write something amazing...' onChange={handleBody} />}</div>
+        <div className="form-group">
+          {formData !== '' && (
+            <ReactQuill
+              modules={QuillModules}
+              formats={QuillFormats}
+              value={body}
+              placeholder="Write something amazing..."
+              onChange={handleBody}
+            />
+          )}
+        </div>
 
         <div>
-          <button type='submit' className='btn btn-primary'>
+          <button type="submit" className="btn btn-primary">
             Update
           </button>
         </div>
@@ -230,30 +259,36 @@ const BlogUpdate = () => {
   };
 
   return (
-    <div className='container-fluid pb-5'>
-      <div className='row'>
-        <div className='col-md-8'>
+    <div className="container-fluid pb-5">
+      <div className="row">
+        <div className="col-md-8">
           {updateBlogForm()}
 
-          <div className='pt-3'>
+          <div className="pt-3">
             {showSuccess()}
             {showError()}
           </div>
 
-          {body && <img src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{width: '100%'}} />}
+          {body && (
+            <img
+              src={`${process.env.NEXT_PUBLIC_API}/blog/photo/${router.query.slug}`}
+              alt={title}
+              style={{width: '100%'}}
+            />
+          )}
         </div>
 
-        <div className='col-md-4'>
+        <div className="col-md-4">
           <div>
-            <div className='form-group pb-2'>
+            <div className="form-group pb-2">
               <h5>Featured image</h5>
               <hr />
 
-              <small className='text-muted'>Max size: 1mb</small>
+              <small className="text-muted">Max size: 1mb</small>
               <br />
-              <label className='btn btn-outline-info'>
+              <label className="btn btn-outline-info">
                 Upload featured image
-                <input onChange={handleChange('photo')} type='file' accept='image/*' hidden />
+                <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
               </label>
             </div>
           </div>
